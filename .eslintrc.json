@@ -38,6 +38,7 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
+    "react/no-array-index-key": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
