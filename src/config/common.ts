@@ -10,7 +10,7 @@ export default class Common {
     this.mode = process.env.MODE;
     this.environment = {
       dev: {
-        domainURL: 'https://api.dev.xlr8rms.com',
+        domainURL: 'https://pokeapi.co/api/v2/',
       },
     };
   }

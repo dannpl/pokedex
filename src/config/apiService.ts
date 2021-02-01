@@ -3,7 +3,9 @@ import axios, { AxiosPromise } from 'axios';
 import Common from './common';
 
 export default class ApiService {
-  constructor(public common: Common) {
+  public common: Common = new Common();
+
+  constructor() {
     //
   }
 

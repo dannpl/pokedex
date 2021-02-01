@@ -7,7 +7,7 @@ import IPokeCard from './interface';
 
 import { Container, Id, Name } from './styles';
 
-const PokeCard: React.FC<IPokeCard> = ({ tags, name, id }) => {
+const PokeCard: React.FC<IPokeCard> = ({ tags = [], name, id }) => {
   return (
     <Container>
       <Id>{id}</Id>

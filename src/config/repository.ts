@@ -1,11 +1,19 @@
+import { AxiosPromise } from 'axios';
+
 import ApiService from './apiService';
 
 export default class Repository {
-  constructor(public apiservice: ApiService) {
+  public api: ApiService = new ApiService();
+
+  constructor() {
     //
   }
 
-  getUser(): any {
-    return this.apiservice.get('/v1/user');
+  getPokemons(offset?: number): Promise<AxiosPromise> {
+    return this.api.get(`pokemon/?&offset=${offset}&limit=10`);
+  }
+
+  getPokemonByName(name: string): Promise<AxiosPromise> {
+    return this.api.get(`pokemon/${name}`);
   }
 }
