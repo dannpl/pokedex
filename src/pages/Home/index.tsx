@@ -24,9 +24,9 @@ const Home: React.FC = () => {
     <Container>
       <PokeballBackground src={PokeballBg} alt="Pokeball icon" />
       <Header>
-        <img src={FilterIcon} alt="Filter icon" />
-        <img src={SortIcon} alt="Sort icon" />
         <img src={GenerationIcon} alt="Geeneration icon" />
+        <img src={SortIcon} alt="Sort icon" />
+        <img src={FilterIcon} alt="Filter icon" />
       </Header>
       <WrapperTitle>
         <p className="title">Pokédex</p>
@@ -39,7 +39,12 @@ const Home: React.FC = () => {
         />
       </WrapperTitle>
       {pokemons.map((item: any) => (
-        <PokeCard key={item.id} {...item} />
+        <PokeCard
+          router={`profile/${item.name}`}
+          className="pokeCard"
+          key={item.id}
+          {...item}
+        />
       ))}
     </Container>
   );

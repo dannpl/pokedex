@@ -7,7 +7,7 @@ import Profile from '../pages/Profile';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Home} />
-    <Route path="/profile:id" component={Profile} />
+    <Route path="/profile/:name" component={Profile} />
     <Route />
   </Switch>
 );

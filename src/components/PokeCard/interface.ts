@@ -1,7 +1,10 @@
-import ITag from '../Tag/interface';
+import { IPokemon } from '../../hooks/Pokemon/interface';
 
-export default interface IPokeCard {
-  id: string;
-  name: string;
-  tags: ITag[];
+export default interface IPokeCard extends IPokemon {
+  className: string;
+  router: string;
+  history: any;
+}
+export interface IPokeCardProps {
+  backgroundColor: string;
 }

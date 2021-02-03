@@ -1,9 +1,14 @@
 import React from 'react';
 
+import { UserProvider } from './User';
 import { PokemonProvider } from './Pokemon';
 
 const AppProvider: React.FC = ({ children }) => (
-  <PokemonProvider>{children}</PokemonProvider>
+  <>
+    <UserProvider>
+      <PokemonProvider>{children}</PokemonProvider>
+    </UserProvider>
+  </>
 );
 
 export default AppProvider;

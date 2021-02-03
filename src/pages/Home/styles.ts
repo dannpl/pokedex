@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 40px 40px 0 40px;
+  padding: 45px 40px 0 40px;
 `;
 
 export const WrapperTitle = styled.div`
@@ -28,8 +28,8 @@ export const Header = styled.div`
   justify-content: flex-end;
 
   img {
-    max-height: 20px;
-    max-width: 20px;
+    max-height: 25px;
+    max-width: 25px;
     margin: 0 10px;
 
     &:last-child {
