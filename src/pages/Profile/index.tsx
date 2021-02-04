@@ -55,6 +55,7 @@ const Profile: React.FC<any> = (props) => {
 
   useEffect(() => {
     setCurrentPokemon(props.location.state);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
