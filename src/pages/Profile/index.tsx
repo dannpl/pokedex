@@ -55,7 +55,6 @@ const Profile: React.FC<any> = (props) => {
 
   useEffect(() => {
     setCurrentPokemon(props.location.state);
-    console.log(currentPokemon);
   }, []);
 
   return (
