@@ -1,41 +1,33 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 45px 40px 0 40px;
+  padding: 40px 40px 0 40px;
+  height: 100%;
 `;
 
-export const WrapperTitle = styled.div`
-  margin-top: 37.5px;
-  margin-bottom: 45px;
-
-  .title {
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 38px;
-    margin-bottom: 10px;
-  }
-
-  .subtitle {
-    line-height: 19px;
-    color: #747476;
-    display: block;
-    margin-bottom: 20px;
-  }
+export const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -10px;
+  align-content: flex-start;
 `;
 
 export const Header = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  margin-bottom: 45px;
+`;
 
-  img {
-    max-height: 25px;
-    max-width: 25px;
-    margin: 0 10px;
+export const Title = styled.p`
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+  margin-bottom: 10px;
+`;
 
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+export const Subtitle = styled.p`
+  line-height: 19px;
+  color: #747476;
+  display: block;
+  margin-bottom: 20px;
 `;
 
 export const PokeballBackground = styled.img`

@@ -1,4 +1,4 @@
 export default interface IBadges {
-  types: [];
+  types: any[];
   pokeTypes: any;
 }

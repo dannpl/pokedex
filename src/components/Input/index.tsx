@@ -1,16 +1,16 @@
 import React from 'react';
 
-import IInputProps from './interface';
+import IInput from './interface';
 
-import { Container } from './styles';
+import { Container, Image, Ipunt } from './styles';
 
-const Input: React.FC<IInputProps> = (props) => {
+const InputComponent: React.FC<IInput> = (props) => {
   return (
     <Container>
-      <img className="icon" src={props.icon} alt="icon" />
-      <input {...props} />
+      <Image src={props.icon} alt="icon" />
+      <Ipunt {...props} />
     </Container>
   );
 };
 
-export default Input;
+export default InputComponent;

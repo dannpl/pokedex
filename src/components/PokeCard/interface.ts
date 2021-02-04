@@ -1,7 +1,7 @@
 import { IPokemon } from '../../hooks/Pokemon/interface';
 
 export default interface IPokeCard extends IPokemon {
-  className: string;
+  className?: string;
   router: string;
   history: any;
 }

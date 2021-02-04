@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  min-height: 315px;
+  min-height: 290px;
   position: relative;
 `;
 
@@ -55,6 +55,7 @@ export const Back = styled.img`
   position: absolute;
   margin-left: 40px;
   z-index: 1;
+  cursor: pointer;
 `;
 
 export const Infos = styled.div`
@@ -123,6 +124,7 @@ export const Tab = styled.p`
   color: ${(props: IProfileProps) =>
     props.active ? '#fff' : 'rgb(255 255 255 / 60%)'};
   text-align: center;
+  cursor: pointer;
 
   &::before {
     background-image: url(${PokeballProfile});
@@ -141,6 +143,63 @@ export const Tab = styled.p`
 
 export const TabContent = styled.div`
   overflow: auto;
+  min-height: 100px;
   background-color: #fff;
   border-radius: 30px 30px 0px 0px;
 `;
+
+export const About = styled.div`
+  padding: 40px;
+
+  .ablities {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+
+    .small {
+      font-size: 12px;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+  .labelGeneral {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #62b957;
+  }
+
+  .infos {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #17171b;
+    width: 102px;
+  }
+
+  .value {
+    font-size: 16px;
+    line-height: 19px;
+    color: #747476;
+    text-transform: capitalize;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 19px;
+    color: #747476;
+    margin-bottom: 20px;
+  }
+`;
+
+export const Stats = styled.div``;

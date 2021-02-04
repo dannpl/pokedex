@@ -24,11 +24,16 @@ import Pokeball from '../../assets/img/Pokeball.png';
 const PokeCard: React.FC<IPokeCard> = (props) => {
   const history = useHistory();
   const { className, types, name, id, sprites, router } = props;
-  const { PokeTypes, formatePokemonId } = PokemonCreateContext();
+  const { PokeTypes, formatePokemonId, resetPokemons } = PokemonCreateContext();
+
+  const goProfileRouter = () => {
+    history.push(router, { ...props });
+    resetPokemons();
+  };
 
   return (
     <Container
-      onClick={() => history.push(router, { ...props })}
+      onClick={() => goProfileRouter()}
       className={className}
       backgroundColor={PokeTypes[types[0].type.name].dafaultColor}
     >
@@ -36,7 +41,7 @@ const PokeCard: React.FC<IPokeCard> = (props) => {
       <PokeballBg src={Pokeball} alt="Pokeball" />
       <Content>
         <Infos>
-          <PokemonId>{formatePokemonId(id)}</PokemonId>
+          <PokemonId>{`#${formatePokemonId(id)}`}</PokemonId>
           <PokemonName>{name}</PokemonName>
           <Badges types={types} pokeTypes={PokeTypes} />
         </Infos>

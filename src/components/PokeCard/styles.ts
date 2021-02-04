@@ -10,10 +10,14 @@ export const Container = styled.div`
   border-radius: 10px;
   max-height: 115px;
   min-height: 115px;
+  min-width: 203px;
+  flex: 1;
   position: relative;
+  margin: 0px 10px 30px 10px;
+  cursor: pointer;
 
-  &.pokeCard {
-    margin-bottom: 30px;
+  @media (min-width: 490px) {
+    min-width: 300px;
   }
 `;
 

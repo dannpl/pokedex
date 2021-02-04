@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { PokemonCreateContext } from '../../hooks/Pokemon';
@@ -21,20 +21,23 @@ import {
   WrapperInfo,
   Back,
   WrapperImage,
+  Stats,
 } from './styles';
 
 import PatternPoints from '../../assets/img/PatternProfile.png';
 import BackIcon from '../../assets/img/backIcon.png';
+import About from './About';
 
 const Profile: React.FC<any> = (props) => {
   const history = useHistory();
+  const {
+    PokeTypes,
+    formatePokemonId,
+    setCurrentPokemon,
+    currentPokemon,
+  } = PokemonCreateContext();
   const { types, name, id, sprites } = props.location.state;
-  const [tabs, setTabs] = useState([
-    { active: true, name: 'About' },
-    { active: false, name: 'Stas' },
-    { active: false, name: 'Evolution' },
-  ]);
-  const { PokeTypes, formatePokemonId } = PokemonCreateContext();
+  const [tabs, setTabs] = useState([{ active: true, name: 'About' }]);
 
   const setCurrentTab = (index: number) => {
     setTabs((prevState) => {
@@ -49,6 +52,11 @@ const Profile: React.FC<any> = (props) => {
       return [...prevState];
     });
   };
+
+  useEffect(() => {
+    setCurrentPokemon(props.location.state);
+    console.log(currentPokemon);
+  }, []);
 
   return (
     <Container backgroundColor={PokeTypes[types[0].type.name].dafaultColor}>
@@ -83,7 +91,12 @@ const Profile: React.FC<any> = (props) => {
             </Tab>
           ))}
         </Tabs>
-        <TabContent>asda</TabContent>
+        <TabContent>
+          {tabs[0] && currentPokemon.species && (
+            <About {...currentPokemon} formatePokemonId={formatePokemonId} />
+          )}
+          <Stats />
+        </TabContent>
       </Content>
     </Container>
   );
