@@ -35,7 +35,9 @@ const PokeCard: React.FC<IPokeCard> = (props) => {
     <Container
       onClick={() => goProfileRouter()}
       className={className}
-      backgroundColor={PokeTypes[types[0].type.name].dafaultColor}
+      backgroundColor={
+        types.length ? PokeTypes[types[0].type.name].dafaultColor : ''
+      }
     >
       <PatternBg src={PatternPoints} alt="Pattern Points" />
       <PokeballBg src={Pokeball} alt="Pokeball" />
@@ -46,7 +48,9 @@ const PokeCard: React.FC<IPokeCard> = (props) => {
           <Badges types={types} pokeTypes={PokeTypes} />
         </Infos>
         <PokemonImage
-          src={sprites.other['official-artwork'].front_default}
+          src={
+            sprites.other ? sprites.other['official-artwork'].front_default : ''
+          }
           alt={name}
         />
       </Content>

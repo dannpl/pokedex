@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 import IPokemonContext, { PokeTypes, IPokemon } from './interface';
 
@@ -11,45 +11,44 @@ const PokemonProvider: React.FC = ({ children }) => {
   const [pokemon, setPokemon] = useState({} as IPokemon);
   const [data, setData]: [IPokemon[], React.Dispatch<any>] = useState([]);
 
-  const getPokemons = async (offset: number) => {
+  const getPokemons = useCallback(async (offset: number) => {
     try {
+      const newPokemons: IPokemon[] = [];
       const response = await api.getPokemons(offset);
 
       for (let i = 0; i < response.data.results.length; i++) {
-        const item = response.data.results[i];
-        const pokemonInfo = await api.getPokemonByName(item.name);
-
-        setData((prevState: IPokemon[]) => {
-          return [...prevState, pokemonInfo.data];
-        });
+        const pokemonInfo = await api.getPokemonByName(
+          response.data.results[i].name,
+        );
+        newPokemons.push(pokemonInfo.data);
       }
-    } catch {}
-  };
 
-  const setCurrentPokemon = async (pokemon: IPokemon) => {
+      setData((prevState: IPokemon[]) => [...prevState, ...newPokemons]);
+    } catch {}
+  }, []);
+
+  const setCurrentPokemon = useCallback(async (item: IPokemon) => {
     try {
-      const response = await api.getPokemonSpecies(pokemon.name);
-      pokemon.species = { ...pokemon.species, ...response.data };
+      const response = await api.getPokemonSpecies(item.name);
+      item.species = { ...item.species, ...response.data };
 
-      setPokemon((prevState) => {
-        return { ...prevState, ...pokemon };
-      });
+      setPokemon(item);
     } catch {}
-  };
+  }, []);
 
   const resetPokemons = () => {
     setData([]);
   };
 
-  const searchPokemon = async (name: string) => {
+  const searchPokemon = useCallback(async (name: string) => {
     try {
       const response = await api.getPokemonByName(name.toLowerCase());
 
       setData([{ ...response.data }]);
     } catch {}
-  };
+  }, []);
 
-  const formatePokemonId = (id: number) => {
+  const formatePokemonId = (id: number): string => {
     const currentId = id.toString();
     let zero = '';
 
@@ -79,15 +78,7 @@ const PokemonProvider: React.FC = ({ children }) => {
 };
 
 const PokemonCreateContext = (): IPokemonContext => {
-  const context = useContext(PokemonContext);
-
-  if (!context) {
-    throw new Error(
-      'PokemonCreateContext must be used within an PokemonProvider',
-    );
-  }
-
-  return context;
+  return useContext(PokemonContext);
 };
 
 export { PokemonContext, PokemonProvider, PokemonCreateContext };

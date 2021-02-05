@@ -6,5 +6,5 @@ export default interface IPokeCard extends IPokemon {
   history: any;
 }
 export interface IPokeCardProps {
-  backgroundColor: string;
+  backgroundColor?: string;
 }

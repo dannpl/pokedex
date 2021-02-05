@@ -3,7 +3,11 @@ import { useHistory } from 'react-router-dom';
 
 import { PokemonCreateContext } from '../../hooks/Pokemon';
 
+import About from './About';
+
 import Badges from '../../components/Badges';
+
+import IProfile from './interface';
 
 import {
   Container,
@@ -26,9 +30,8 @@ import {
 
 import PatternPoints from '../../assets/img/PatternProfile.png';
 import BackIcon from '../../assets/img/backIcon.png';
-import About from './About';
 
-const Profile: React.FC<any> = (props) => {
+const Profile: React.FC<IProfile> = (props) => {
   const history = useHistory();
   const {
     PokeTypes,
@@ -59,7 +62,11 @@ const Profile: React.FC<any> = (props) => {
   }, []);
 
   return (
-    <Container backgroundColor={PokeTypes[types[0].type.name].dafaultColor}>
+    <Container
+      backgroundColor={
+        types.length ? PokeTypes[types[0].type.name].dafaultColor : ''
+      }
+    >
       <Header>
         <Back
           onClick={() => history.push('/')}
@@ -72,7 +79,11 @@ const Profile: React.FC<any> = (props) => {
         <Infos>
           <WrapperImage>
             <PokemonImage
-              src={sprites.other['official-artwork'].front_default}
+              src={
+                sprites.other
+                  ? sprites.other['official-artwork'].front_default
+                  : ''
+              }
               alt={name}
             />
           </WrapperImage>

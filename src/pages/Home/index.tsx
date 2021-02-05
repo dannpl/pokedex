@@ -33,8 +33,6 @@ const Home: React.FC = () => {
     if (!containerPokemons) return;
 
     if (containerPokemons.clientHeight - windowScroll < 1300) {
-      window.scrollTo(0, 1000);
-
       setOffset((prevState: number): any => {
         return prevState + 35;
       });
@@ -52,6 +50,7 @@ const Home: React.FC = () => {
       }
 
       searchPokemon(name);
+      window.scrollTo(0, 0);
     },
     [pokemons],
   );

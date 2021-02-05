@@ -50,13 +50,13 @@ export const Infos = styled.div`
   padding-left: 20px;
 `;
 
-export const PokemonId = styled.div`
+export const PokemonId = styled.p`
   color: rgba(23, 23, 27, 0.6);
   font-weight: bold;
   font-size: 12px;
 `;
 
-export const PokemonName = styled.div`
+export const PokemonName = styled.p`
   font-weight: bold;
   font-size: 26px;
   line-height: 31px;
